@@ -1,1 +1,3 @@
-dsadsa
+java_library(
+    name = "bla",
+)
