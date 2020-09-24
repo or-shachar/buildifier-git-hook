@@ -1,0 +1,5 @@
+#!/bin/sh
+
+echo "CHANGED FILES:"
+git diff --cached --name-status | awk '$1 != "D" { print $2 }'| grep ".*/?BUILD.bazel$"
+echo "done"
