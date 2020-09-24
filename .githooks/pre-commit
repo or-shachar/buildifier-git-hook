@@ -1,5 +1,4 @@
 #!/bin/sh
-
-echo "CHANGED FILES:"
-git diff --cached --name-status | awk '$1 != "D" { print $2 }'| grep ".*/?BUILD.bazel$"
-echo "done"
+FILES=$(git diff --cached --name-only --diff-filter=ACMR "*BUILD.bazel" "*.bzl" "WORKSPACE" | sed 's| |\\ |g')
+echo "$FILES" | xargs buildifier
+echo "$FILES" | xargs git add
